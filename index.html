@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H5P SCORM 課程內容：Find the words (修復版)</title>
+    <title>H5P SCORM 課程內容：Find the words (最終優化版)</title>
     
     <script src="SCORM_API_wrapper.js"></script>
     <script src="h5p-adaptor.js"></script>
@@ -12,25 +12,57 @@
     <script src="h5p-core/js/h5p-jquery.js"></script>
     <script src="h5p-core/js/h5p-core.js"></script>
     <script src="h5p-core/js/h5p-integration.js"></script>
+    
     <style>
+        /* 確保頁面邊距歸零，背景清晰 */
         body {
-            /* 僅確保頁面邊距歸零，讓 H5P 內容佔滿 */
+            font-family: 'Segoe UI', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* 防止滾動條意外出現 */
+            background-color: #eef3f6; /* 淺藍灰色背景 */
+            color: #333333;
+        }
+
+        /* 內容容器美化 */
+        #h5p-container {
+            /* 使用 margin: auto 確保內容在瀏覽器中置中 */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); 
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            max-width: 1200px;
+            margin: 30px auto; 
+            min-height: 80vh; /* 最小高度，防止內容太少時容器塌陷 */
+            box-sizing: border-box;
         }
         
-        #h5p-container {
-            width: 100%;
-            height: 100vh; /* 確保容器佔滿整個視窗高度 */
-            box-sizing: border-box;
-            /* 移除複雜的 box-shadow 和 animation 來提高穩定性 */
-            padding: 0;
-            margin: 0 auto;
+        /* 定義呼吸燈動畫 */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+        }
+
+        /* **時間秒數的美觀變化 (關鍵修正)** */
+        /* 應用到 H5P 可能使用的時間顯示元素 (多個通用名稱) */
+        .h5p-timer-display, .h5p-time-display, .h5p-current-time, .h5p-question-timer {
+            font-size: 1.2em !important; 
+            font-weight: bold;
+            color: #e74c3c !important; /* 醒目的紅色 */
+            background-color: #ffffff;
+            border: 2px solid #e74c3c;
+            padding: 5px 10px;
+            margin-left: 10px; 
+            border-radius: 8px;
+            display: inline-block !important; 
+            
+            /* 應用呼吸燈動畫：2秒循環一次 */
+            animation: pulse 2s infinite ease-in-out; 
+            transition: all 0.3s ease;
         }
 
     </style>
-    </head>
+</head>
 <body>
 
     <div id="h5p-container"></div>
